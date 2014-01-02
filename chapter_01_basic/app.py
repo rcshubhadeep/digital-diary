@@ -7,8 +7,10 @@
 #############################
 
 from flask import Flask
-from flask.helpers import send_from_directory
+from flask.globals import request
+from flask.helpers import send_from_directory, url_for
 from flask.templating import render_template
+from werkzeug.utils import redirect
 import os
 
 # initialization
@@ -42,7 +44,13 @@ def view_entry(diary_id=None):
 
 @app.route("/add/")
 def add_entry():
-    return 'The addition of diary entry'
+    return render_template('add_entry.html')
+
+@app.route("/post_entry", methods=['POST'])
+def post_entry():
+    if request.method == 'POST':
+        ## Eventually we will add the entry to DB here and then redirect.
+        return redirect(url_for('index'))
 
 # launch
 if __name__ == "__main__":
