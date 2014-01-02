@@ -1,9 +1,9 @@
 #############################
 ## The application start point
 ## Digital Diary chapter-1
-## Codes are free to use in any form wished; however;
+## Codes are free to use in any form wished by the user; however;
 ## no warranty of any form implicit or explicit for the fitness of the code 
-## in a specific situation is not given.
+## to a specific situation is given.
 #############################
 
 from flask import Flask
