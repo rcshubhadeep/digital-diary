@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block title %} - Add{% endblock %}
 {% block content %}
+<!-- Did you notice how we are using a block "title" here to change 
+	the page title based on the page we are loading? -->
 <form class="form-horizontal" id="registerHere" method='post' action="{{ url_for('post_entry') }}">
 	<fieldset>
 		<legend>Add Entry</legend>
@@ -29,12 +31,16 @@
 </form>
 <!-- We are using the awesome datepicker from - https://github.com/eternicode/bootstrap-datepicker -->
 <script type="text/javascript">
+	/*
+	 * Initialize the datepicker at the $(document).ready() jQuery method.
+	 * to ensure that it gets called after the whole process of loading the 
+	 * document is over. 
+	 */
 	$(document).ready(function(){
 		$('#sandbox-container .input-append.date').datepicker({
 			autoclose: true,
 			todayHighlight: true
 		});	
 	});
-	
 </script>
 {% endblock %}

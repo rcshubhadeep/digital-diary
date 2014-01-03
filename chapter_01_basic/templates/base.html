@@ -8,8 +8,11 @@
     <meta name="author" content="">
 
     <title>Digital Diary{% block title %}{% endblock %}</title>
+    <!-- In other templates you will see how the title block is used -->
 
     <!-- Bootstrap core CSS -->
+    <!-- We can use the url_for flask function here. As the rendering of this
+    	is controlled by flask so we have the access -->
     <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
 
     <!-- Add custom CSS here -->
@@ -39,11 +42,12 @@
             <li><a href="#contact">Contact</a></li> -->
           </ul>
         </div><!-- /.navbar-collapse -->
-      </div><!-- /.container -->
+      </div><!-- /.container --> <!-- It is a good practice to make a comment where one section ends -->
     </nav>
     {% endblock %}
     <div class="container">
         <div class="row">
+        <!-- This section will be replaced with content from the templates for each route -->
           {% block content %}
           {% endblock %}
         </div>
@@ -59,6 +63,7 @@
         {% endblock %}
     </div>
     {% block js_footer %}
+      <!-- For better performance, it is advised that you add the javascripts at the end of a page -->
       <script src="{{ url_for('static', filename='js/jquery-1.10.2.js') }}"></script>
       <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
       <script src="{{ url_for('static', filename='js/bootstrap-datepicker.js') }}"></script>
