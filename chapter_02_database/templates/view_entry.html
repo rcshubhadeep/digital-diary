@@ -1,0 +1,20 @@
+<!-- This is extending the base. and this line will be the first line if the HTML -->
+{% extends "base.html" %}
+{% block title %} - View{% endblock %}
+{% block content %}
+<!-- Did you notice how we are using a block "title" here to change 
+	the page title based on the page we are loading? -->
+<div class="col-lg-8">
+	<!-- It is actually same as index template. Just the content is for
+		one entry only -->
+	<!-- diary entry -->
+          <h1><a href="#">Diary Entry One</a></h1>
+          <p class="lead">by Bob</p>
+          <hr>
+          <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
+          <hr>
+          <img src="http://placehold.it/900x300" class="img-responsive">
+          <hr>
+          <p>This is a very basic starter template for a blog homepage. It makes use of Glyphicons that are built into Bootstrap 3, and it makes use of the Pager at the bottom of the page. Make sure you get the Glyphicons files by downloading the entire <code>/fonts</code> directory that you can download in the source files or at <a href="http://getbootstrap.com">getbootstrap.com</a>. That directory has all of the web fonts in it which makes Glyphicons work. </p>
+</div>
+{% endblock %}
