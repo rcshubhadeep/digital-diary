@@ -7,11 +7,12 @@
 #############################
 
 ## Our needed imports from Python and Flask
-from flask import Flask
+from flask import Flask, session
 from flask.globals import request
-from flask.helpers import send_from_directory, url_for
+from flask.helpers import send_from_directory, url_for, flash
 from flask.templating import render_template
 from werkzeug.utils import redirect
+import db
 import os
 
 # initialization
@@ -49,7 +50,14 @@ def view_entry(diary_id=None):
 def add_entry():
     ''' This is to serve the add entry template. We did not make this
     as the point where the post data  will also come once the form is submitted'''
-    return render_template('add_entry.html')
+    user_name = ''
+    try:
+        if session['name'] != '':
+            user_name = session['name']
+    except:
+        user_name = 'default'
+        session['name'] = 'default'
+    return render_template('add_entry.html', user_name=user_name)
 
 @app.route("/post_entry", methods=['POST'])
 def post_entry():
@@ -58,9 +66,26 @@ def post_entry():
     locally, try hitting http://localhost:5000/post_entry and see what you get'''
     if request.method == 'POST':
         ## Eventually we will add the entry to DB here and then redirect.
-        return redirect(url_for('index'))
+        ret = db.add_entry(user_name=request.form['user_name'],
+                        title=request.form['entry_title'],
+                 date=request.form['entry_date'], entry=request.form['entry'])
+        if ret == True:
+            flash('Entry successfully added -- ' + session['name'])
+            return redirect(url_for('index'))
+        else:
+            flash("Opps! Somwthing went wrong!")
+            return redirect(url_for('index'))       
+
+@app.route("/post_name", methods=['POST'])
+def post_name():
+    '''This is our place to enter the name in the DB.'''
+    if request.method == 'POST':
+        name = request.form['person_name']
+        session['name'] = name
+        return redirect(url_for('add_entry'))
 
 # launch
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000)) ## This particular way of lunching the app is Heroku ready.
+    app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT' ## This secrect key to sign the cookie so that even user can see the session cookies they can not change them
     app.run(host='0.0.0.0', port=port)

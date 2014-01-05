@@ -3,6 +3,9 @@
 {% block content %}
 <!-- Did you notice how we are using a block "title" here to change 
 	the page title based on the page we are loading? -->
+<div>{{user_name}}, add some awesome entry today</div>
+<!-- Notice how we are usng the "user_name" variable here. We have passed this from the route 
+	def function (see app.py -> add_entry() method for more information) -->
 <form class="form-horizontal" id="registerHere" method='post' action="{{ url_for('post_entry') }}">
 	<fieldset>
 		<legend>Add Entry</legend>
@@ -25,6 +28,7 @@
 			</div>
 		</div><br />
 		<div class="control-group">
+			<input type="hidden" name="user_name" value="{{user_name}}" />
 			<button type="submit" class="btn btn-default">Submit</button>
 		</div>
 	</fieldset>

@@ -21,6 +21,16 @@
     {% endblock %}
   </head>
   <body>
+  	<!-- Nice and simple. Flask flash messages -->
+    {% with messages = get_flashed_messages() %}
+  		{% if messages %}
+	    	<ul class=flashes>
+	    	{% for message in messages %}
+	      	<li>{{ message }}</li>
+	    	{% endfor %}
+	    	</ul>
+  		{% endif %}
+	{% endwith %}
     {% block navbar %}
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
