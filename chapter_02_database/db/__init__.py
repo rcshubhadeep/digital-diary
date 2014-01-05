@@ -26,7 +26,7 @@ def add_entry(user_name="", title="", date="", entry=""):
                     "date": create_date,
                     "entry": entry}
     try:
-        collection.insert(data_to_save)
+        collection.insert(data_to_save) ## Pymongo's method to insert a document in MongoDB
         return True ## The save operation has completed successfully.
     except:
         return False ## OOPS! Something went worng.
