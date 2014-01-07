@@ -29,7 +29,8 @@ def view_entry(name=None):
     ''' Function names are following the Google Python style guide '''
     ## Notice how we are passing a dynamic variable as a part of the URL/Route
     ## to see the output of this route point your browser to http://localhost:5000/hello/yourname
-    ## replace the "yourname" part with anything you want and observe what happens
+    ## replace the "yourname" part with anything you want and observe what happens.
+    ## Also try visiting a url like - http://localhost:5000/hello (without the last part)
     return "Flask greets you - " + name + "!!"
 
 # launch
