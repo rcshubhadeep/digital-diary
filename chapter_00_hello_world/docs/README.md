@@ -41,7 +41,7 @@ Congratulations!! you just cloned the code for the whole tutorial and mostly you
 
 Start Exploring the project:
 ---------------------------
-The directory digital-diary is divided into many small steps (“chapters”, we call them) and each chapter is a contained in itself project of Flask. This document will only explore the chapter_00_basic's content and directory structure. However, since this directory structure and file structure is followed over all the subsequent chapters we will not explain all those that we will explain here in the other documents. 
+The directory digital-diary is divided into many small steps (“chapters”, we call them) and each chapter is a contained in itself project of Flask. This document will only explore the chapter_00_hello_world's content and directory structure. However, since this directory structure and file structure is followed over all the subsequent chapters we will not explain all those that we will explain here in the other documents. 
 
 The Directory Structure:
 -----------------------
