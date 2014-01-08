@@ -1,0 +1,18 @@
+<!-- This is extending the base. and this line will be the first line if the HTML -->
+{% extends "base.html" %}
+{% block title %} - View{% endblock %}
+{% block content %}
+<!-- Did you notice how we are using a block "title" here to change 
+	the page title based on the page we are loading? -->
+<div class="col-lg-8">
+	<!-- It is actually same as index template. Just the content is for
+		one entry only -->
+	<!-- diary entry -->
+          <h1><a href="#">{{ entry['title'] }}</a></h1>
+          <p class="lead">by {{ entry['user'] }}</p>
+          <hr>
+          <p><span class="glyphicon glyphicon-time"></span> Posted on {{ entry['date'] }}</p>
+          <hr>
+          <p>{{ entry['entry'] }}</p>
+</div>
+{% endblock %}

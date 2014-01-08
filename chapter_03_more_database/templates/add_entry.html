@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %} - Add{% endblock %}
+{% block content %}
+<!-- Did you notice how we are using a block "title" here to change 
+	the page title based on the page we are loading? -->
+<div>{{user_name}}, add some awesome entry today</div>
+<!-- Notice how we are usng the "user_name" variable here. We have passed this from the route 
+	def function (see app.py -> add_entry() method for more information) -->
+<form class="form-horizontal" id="registerHere" method='post' action="{{ url_for('post_entry') }}">
+	<fieldset>
+		<legend>Add Entry</legend>
+		<div class="control-group success error">
+			<label class="control-label">Title</label>
+			<div class="controls">
+				<input type="text" class="input-xlarge" id="entry_title" name="entry_title" rel="popover" data-content="Enter some cool title for your entry" data-original-title="Entry Title">
+			</div>
+		</div>
+		<div class="control-group success error" id="sandbox-container">
+			<label class="control-label">Date</label>
+			<div class="input-append date">
+				<input type="text" class="span2" name="entry_date"><span class="add-on"><i class="icon-th"></i></span>
+			</div>
+		</div>
+		<div class="control-group success error">
+			<label class="control-label">Entry</label>
+			<div class="controls">
+				<textarea cols="50" rows="10" placeholder="What's up?" name="entry" required></textarea>
+			</div>
+		</div><br />
+		<div class="control-group">
+			<input type="hidden" name="user_name" value="{{user_name}}" />
+			<button type="submit" class="btn btn-default">Submit</button>
+		</div>
+	</fieldset>
+</form>
+<!-- We are using the awesome datepicker from - https://github.com/eternicode/bootstrap-datepicker -->
+<script type="text/javascript">
+	/*
+	 * Initialize the datepicker at the $(document).ready() jQuery method.
+	 * to ensure that it gets called after the whole process of loading the 
+	 * document is over. 
+	 */
+	$(document).ready(function(){
+		$('#sandbox-container .input-append.date').datepicker({
+			autoclose: true,
+			todayHighlight: true
+		});	
+	});
+</script>
+{% endblock %}
