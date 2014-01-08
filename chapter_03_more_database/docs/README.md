@@ -1,7 +1,7 @@
-Chapter 02
+Chapter 03
 ==========
 
-Extending from Chapter 01, we intorduce basic Daatabase connection and session concepts in this chapter.
+Extending from Chapter 02, we intorduce some more advanced DB related operations and dynami HTML generation here.
 
 The pre-requisites:
 ------------------ 
