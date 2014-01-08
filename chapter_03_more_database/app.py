@@ -76,7 +76,7 @@ def post_entry():
     methods (http VERB) which can access this route. If you are running this application
     locally, try hitting http://localhost:5000/post_entry and see what you get'''
     if request.method == 'POST':
-        ## Eventually we will add the entry to DB here and then redirect.
+        ## Adding the data here and redirecting with proper flash message
         ret = db.add_entry(user_name=request.form['user_name'],
                         title=request.form['entry_title'],
                  date=request.form['entry_date'], entry=request.form['entry'])
