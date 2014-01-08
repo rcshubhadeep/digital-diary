@@ -41,9 +41,9 @@ This is a base template for the whole application, which means all the common pa
 
 Explaining index.html:
 ---------------------
-This is the template associated with our root/index route (that is when you hit, http://localhost:5000) if you see this file then you will see that it starts with {% extends "base.html" %} This is Jinja's way of inheriting templates. This line here means that our index.html is a “child” of base.html and in base.html there is a space where Jinja will insert the contents of index.html (see the lines in base.html - {% block content %} {% endblock %} and also please notice that all the contents of our index.html is actually written between the same “block” definitions as well.). To know more about Jinja please visit the link already provided. 
+This is the template associated with our root/index route (that is when you hit, [http://localhost:5000] (http://localhost:5000)) if you see this file then you will see that it starts with {% extends "base.html" %} This is Jinja's way of inheriting templates. This line here means that our index.html is a “child” of base.html and in base.html there is a space where Jinja will insert the contents of index.html (see the lines in base.html - {% block content %} {% endblock %} and also please notice that all the contents of our index.html is actually written between the same “block” definitions as well.). To know more about Jinja please visit the link already provided. 
 
 
 Conclusion:
 ----------
-When you are done with the code study and you can run the application (python app.py) you should visit http://localhost:5000 to see the result. Try the links there. Also try visiting some not implemented page (e.g. http://localhost:5000/myname) 
+When you are done with the code study and you can run the application (python app.py) you should visit [http://localhost:5000] (http://localhost:5000) to see the result. Try the links there. Also try visiting some not implemented page (e.g. [http://localhost:5000/myname] (http://localhost:5000/myname)) 
