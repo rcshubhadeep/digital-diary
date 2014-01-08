@@ -87,5 +87,5 @@ http://localhost:5000 call the index method.
 Conclusion:
 ----------
 When you read through the whole code and understand it and can run the application (python app.py) you should try to visit
-http://localhost:5000 and see the result and also http://localhost:5000/hello/yourname (replace the yourname with anything you want)
+[http://localhost:5000](http://localhost:5000) and see the result and also [http://localhost:5000/hello/yourname] (http://localhost:5000/hello/yourname) (replace the yourname with anything you want)
 Also, try to visit the same URL without the last yourname part and see what happens.
