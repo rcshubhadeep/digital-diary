@@ -11,7 +11,7 @@
     </form>
 <div class="col-lg-8">		          
           <!-- diary entry -->
-          {% for entry in entreis %}
+          {% for entry in entries %}
           	<h1><a href="/view/{{ entry['_id'] }}">{{ entry['title'] }}</a></h1>
           	<p class="lead">by {{ entry['user'] }}</p>
           	<hr>

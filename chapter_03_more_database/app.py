@@ -41,12 +41,12 @@ def index():
     We are searching and getting all the entries from the DB and displaying them.
     One more thing to notice is that we are typecasting the default pymongo return to
     list before we pass it to the template.'''
-    entreis = get_entries()
-    if entreis == None:
-        entreis = []
+    entries = get_entries()
+    if entries == None:
+        entries = []
         flash("Opps! Somwthing went wrong!")
     return render_template('index.html',
-                           entreis=list(entreis))
+                           entries=list(entries))
 
 @app.route("/view/<diary_id>")
 def view_entry(diary_id=None):
