@@ -82,7 +82,7 @@ Few words about Route:
 ---------------------
 A route is the way to tell Flask that which part of the code should be executed when we hit a URL. for an example in the app.py file 
 you can see that the index method is decorated with a decorator @app.route("/") and this decorator tell Flask that when somebody hits
-http://localhost:5000 call the index method.
+[http://localhost:5000] (http://localhost:5000) call the index method.
 
 Conclusion:
 ----------
