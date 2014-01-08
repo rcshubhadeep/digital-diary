@@ -46,9 +46,9 @@ The directory digital-diary is divided into many small steps (“chapters”, we
 The Directory Structure:
 -----------------------
 Unfortunately when we are writing this document there is no standard way of generating a typical boilerplate code/dir for Flask unlike Django or Pyramid. So, everybody has the right to reorganize the dirs the way they want. What is followed here is based on the best practices and conventional standard. 
-app.py This is the main entry point for the application. Open up this file in the the text editor you are using and read the comments to understand it better
-Procfile In true sense this file has nothing to do with Flask. It is here to make this project ready to be deployed over Heroku. This actually lets the gunicorn take over the application instead of Flask's default server.
-requirements.txt This is again, not very necessary from a Flask prespective. This lists all the packages we need to run this particular project. Mostly because of Heroku.
+* app.py This is the main entry point for the application. Open up this file in the the text editor you are using and read the comments to understand it better
+* Procfile In true sense this file has nothing to do with Flask. It is here to make this project ready to be deployed over Heroku. This actually lets the gunicorn take over the application instead of Flask's default server.
+* requirements.txt This is again, not very necessary from a Flask prespective. This lists all the packages we need to run this particular project. Mostly because of Heroku.
 
 
 
