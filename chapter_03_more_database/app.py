@@ -1,6 +1,6 @@
 #############################
 ## The application start point
-## Digital Diary chapter-2
+## Digital Diary chapter-3
 ## Codes are free to use in any form wished by the user; however;
 ## no warranty of any form implicit or explicit for the fitness of the code 
 ## to a specific situation is given.
