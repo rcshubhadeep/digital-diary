@@ -26,7 +26,10 @@ def add_entry(user_name="", title="", date="", entry="", private=False):
                     "title": title,
                     "date": create_date,
                     "entry": entry,
-                    "is_private": private} ## Notice instead of using a character like "y" we are using Python's booolean directly here
+                    "is_private": private} 
+                    ## Notice instead of using a character like "y" we are using Python's booolean directly here
+                    ## ALSO notice that it is EASY to add a new key=>value pair in the present document 
+                    ## structure. Mongo is not going to complain that we did not have this for earlier ones
     try:
         collection.insert(data_to_save) ## Pymongo's method to insert a document in MongoDB
         return True ## The save operation has completed successfully.

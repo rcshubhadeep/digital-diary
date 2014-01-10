@@ -54,10 +54,10 @@ def index():
     init_entries = list(entries)
     final_entries = []
     for entry in init_entries:
-        if entry['user'] == session['name']: ## If it is our current user's entry
+        if entry['user'] == user_name: ## If it is our current user's entry
             final_entries.append(entry) ## The the entry whatever the private settings is
         else:
-            if entry['is_private'] == False: ## Not our current user? Check for privacy settings
+            if 'is_private' in entry and entry['is_private'] == False: ## Not our current user? Check for privacy settings
                 final_entries.append(entry)
                 
     return render_template('index.html',

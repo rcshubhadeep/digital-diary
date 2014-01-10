@@ -1,7 +1,7 @@
 Chapter 03
 ==========
 
-Extending from Chapter 04, we intorduce some more advanced DB related operations and dynami HTML generation here.
+Extending from Chapter 04, we carry on where we left at chapter 03. We are going to add a privacy settings to our entries as the are diary entries. And we will apply a kind of Access Control (Who can see which entry?) based on the privacy field and presently session registered. 
 
 The pre-requisites:
 ------------------ 
@@ -13,7 +13,7 @@ The pre-requisites:
 
 Setup the environment:
 ---------------------
-There is nothing to setup if you are successfull until chapter 02
+There is nothing to setup if you are successfull until chapter 03
 
 Start Exploring the project:
 ---------------------------
@@ -21,22 +21,11 @@ No new module/directory/package is introduced here
 
 Explaining __init__.py file:
 ---------------------------
-We have already explained the basics of DB and session in the last chapter, here, I would like to concentrate on one single fact
-If we see line our same old index() method now we will see that the method has changed. It is now callin a function from db package
-called get_entries. This function gives us the list of all entries from the DB. We collect it and send it to the template for it to render those entries.
-
-Explaining index.html file:
---------------------------
-If we see this file then we will notice all the static HTML code for hardcoded entries are gone. And we will notice that we are
-writing some kind of for loop inside the template. Everything in between
-
-	{% for entry in entries %}
-	{% endfor %}
-	
-is going to be repeated the number of times this loop willl run. That is how, with one single block of HTML we can generate the HTML
-for all the entries in the system. This is the beauty and power of templating. We can insert logical blocks inside HTML which the template engine takes care of before it sends the template to the browser as a pure HTML file.
+If we look carefully then we will see that the index function has got some new codes. Earlier we used to scan through the whole DB and get every document present.
+But now, we are filtering them based on the user name and the privacy settings before we send them to the view.
 
 Conclusion:
 ----------
 When you are done looking into the code files and editing them and can run the app (python app.py) you should visit [http://localhost:5000] (http://localhost:5000) and put in your name in the text box at the top and hit “Go!”. 
-You will be redirected to the index page once you hit submit in the add entry page. And BOOM! you can see your newly created entry along with all the other entries in the system.
+In the add entry page you will see that we have a checkbox bellow the entry text area and now when you submit the entry check that. After you are done you will be redirected to the index page and you will not see any chaanges there.
+Now, enter a different name in the top left text box at index page and hit Go!. Add an entry and comeback you are only seeing your own entery now all the others are vanished!! Privacy secured.
