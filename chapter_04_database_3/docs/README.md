@@ -1,7 +1,7 @@
 Chapter 03
 ==========
 
-Extending from Chapter 03, we intorduce some more advanced DB related operations and dynami HTML generation here.
+Extending from Chapter 04, we intorduce some more advanced DB related operations and dynami HTML generation here.
 
 The pre-requisites:
 ------------------ 
