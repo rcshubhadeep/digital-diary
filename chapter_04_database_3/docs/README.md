@@ -1,7 +1,7 @@
 Chapter 04
 ==========
 
-Extending from Chapter 04, we carry on where we left at chapter 03. We are going to add a privacy settings to our entries as the are diary entries. And we will apply a kind of Access Control (Who can see which entry?) based on the privacy field and presently session registered. 
+Extending from Chapter 03, we carry on where we left at chapter 03. We are going to add a privacy settings to our entries as the are diary entries. And we will apply a kind of Access Control (Who can see which entry?) based on the privacy field and presently session registered. 
 
 The pre-requisites:
 ------------------ 
