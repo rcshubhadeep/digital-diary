@@ -7,14 +7,16 @@
 #############################
 
 ## Our needed imports from Python and Flask
-from db import get_entries, get_entry
-from flask import Flask, session
+from db import get_entries, get_entry, search_by_username
+from flask import Flask, session, jsonify
 from flask.globals import request
 from flask.helpers import send_from_directory, url_for, flash
 from flask.templating import render_template
 from werkzeug.utils import redirect
 import db
+import json
 import os
+from bson import json_util
 
 # initialization
 app = Flask(__name__)
@@ -122,6 +124,15 @@ def post_name():
         name = request.form['person_name']
         session['name'] = name
         return redirect(url_for('add_entry'))
+
+@app.route("/search")
+def search_json():
+    final_resp = []
+    usr = request.args.get('username')
+    ret_val = search_by_username(usr)
+    for document in ret_val:
+        final_resp.append(document)
+    return json.dumps(final_resp, default=json_util.default)
 
 # launch
 if __name__ == "__main__":

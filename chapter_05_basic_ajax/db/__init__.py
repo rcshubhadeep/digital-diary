@@ -46,8 +46,15 @@ def get_entries():
 def get_entry(ent_id):
     ''' Notice that instead of find we are using find_one here'''
     try:
-        ## Notic the way we specify AND condition in pymongo.
+        ## Notice the way we specify AND condition in pymongo.
         ## We can obviously do with a explicit "$and". But this is short hand 
         return collection.find_one({"_id": ObjectId(ent_id), "is_private": False}) 
+    except:
+        return None
+
+def search_by_username(username):
+    try:
+        ## We will be filttering this data by user name. And ovbiously giving due respect to the privacy
+        return collection.find({"user": username, "is_private": False})
     except:
         return None

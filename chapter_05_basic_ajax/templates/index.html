@@ -28,10 +28,37 @@
 
 </div>
 <script type="text/javascript">
+	var url_to_get = "/search";
 	$(document).ready(function(){
 		$("#search_button").click(function(){
-			console.log("Search button clicked!!"); //Send ajax request here.
-		})
-	})
+			$.getJSON($SCRIPT_ROOT + '/search', {
+        		username: $("#search").val()
+      			}, function(data) {
+      				html = '';
+      				/**
+      				 * We are looping over the whole Data here and creating the new table
+      				 * structure and then replacing the old one with this new one. 
+      				 * We will in future implement the same feature with Angular JS.
+      				 * That will make us understand that what are the differences between Angular and jQuery
+      				 */
+        			for (row in data){
+        				html = html+ '<h1><a href="/view/'+data[row]['_id']['$oid']+'">'+data[row]['title']+'</a></h1>';
+        				html = html + '<p class="lead">by '+data[row]['user']+"</p><hr>";
+        				html = html + '<p><span class="glyphicon glyphicon-time"></span>Posted on ';
+        				dt = new Date(data[row]['date']['$date'] * 1000);
+        				dt_str = dt.toString();
+        				res = dt_str.split(" ");
+        				final_date_str = res.slice(0,3).join(" ");
+        				html = html + final_date_str + "</p><hr>";
+        				html = html + "<p>" + data[row]['entry'] + "</p>";
+        				html = html + '<a class="btn btn-primary" href="/view/' + data[row]['_id']['$oid'] + '">';
+        				html = html + 'Read More <span class="glyphicon glyphicon-chevron-right"></span></a>';
+        				console.log(html);
+        				$(".col-lg-8").html(html);
+        			}
+      		});
+      		return false;
+    	});
+	});
 </script>
 {% endblock %}

@@ -16,6 +16,9 @@
     <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
 
     <!-- Add custom CSS here -->
+    <script type=text/javascript>
+  		$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+	</script>
     <link href="{{ url_for('static', filename='css/blog-home.css') }}" rel="stylesheet">
     <script src="{{ url_for('static', filename='js/jquery-1.10.2.js') }}"></script>
     {% endblock %}
@@ -50,7 +53,7 @@
             <li><a href="/add">Add Entry</a></li>
             {% if home_page %}
             <li style="vertical-align: bottom;">
-            	<input name="search" id="search" placeholder="Search"/>
+            	<input name="search" id="search" placeholder="Search entry by username"/>
             	<button type='button' id="search_button" class="btn btn-default">Search!</button>
             </li>
             {% endif %}
