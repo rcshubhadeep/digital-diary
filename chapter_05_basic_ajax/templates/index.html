@@ -1,0 +1,37 @@
+<!-- This is extending the base. and this line will be the first line if the HTML -->
+{% extends "base.html" %}
+{% block title %} - Home{% endblock %}
+{% block content %}
+<!-- Did you notice how we are using a block "title" here to change 
+	the page title based on the page we are loading? -->
+	<form class="form-horizontal" id="registerHere" method='post' action="{{ url_for('post_name') }}">
+	<label>Enter your name</label>
+    <input name="person_name" id="person_name"/>
+    <button type='submit' class="btn btn-default">Go!</button>
+    </form>
+<div class="col-lg-8">		          
+          <!-- diary entry -->
+          {% for entry in entries %}
+          	<h1><a href="/view/{{ entry['_id'] }}">{{ entry['title'] }}</a></h1>
+          	<p class="lead">by {{ entry['user'] }}</p>
+          	<hr>
+          	<p><span class="glyphicon glyphicon-time"></span> Posted on {{ entry['date'] }}</p>
+          	<hr>
+          	<p>{{ entry['entry'] }}</p>
+          	<a class="btn btn-primary" href="/view/{{ entry['_id'] }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>          	
+          {% endfor %}
+          <!-- pager. Will come later. Just the structure here -->
+          <!-- <ul class="pager">
+            <li class="previous"><a href="#">&larr; Older</a></li>
+            <li class="next"><a href="#">Newer &rarr;</a></li>
+          </ul> -->
+
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#search_button").click(function(){
+			console.log("Search button clicked!!"); //Send ajax request here.
+		})
+	})
+</script>
+{% endblock %}
