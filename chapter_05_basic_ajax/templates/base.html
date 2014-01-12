@@ -17,7 +17,7 @@
 
     <!-- Add custom CSS here -->
     <script type=text/javascript>
-  		$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+  		$SCRIPT_ROOT = {{ request.script_root|tojson|safe }}; // A way to keep track of the root route in JS
 	</script>
     <link href="{{ url_for('static', filename='css/blog-home.css') }}" rel="stylesheet">
     <script src="{{ url_for('static', filename='js/jquery-1.10.2.js') }}"></script>

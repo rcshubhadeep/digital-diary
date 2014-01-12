@@ -127,12 +127,22 @@ def post_name():
 
 @app.route("/search")
 def search_json():
+    '''This is a JSON route. This kin of routes are normally called from a Ajax call.
+    Instead of returning a template it returns a json string to the calling client
+    (here our browser.). Notice the return statement carefully.
+    Also notice the comment above it'''
+    ## In production systems it can be sometimes required that you authenticate here
+    ## as a valid client to the system. But that is a pretty advanced concept and
+    ## can be discussed later.
     final_resp = []
     usr = request.args.get('username')
     ret_val = search_by_username(usr)
     for document in ret_val:
         final_resp.append(document)
-    return json.dumps(final_resp, default=json_util.default)
+    ## This function bellow transforms a list of dicts or a single dict into a valid JSON string
+    ## The second parameter is given from pymongo's bson.json_util module
+    ## It helps this function to treat the datetime and ObjectId objects properly.
+    return json.dumps(final_resp, default=json_util.default) 
 
 # launch
 if __name__ == "__main__":

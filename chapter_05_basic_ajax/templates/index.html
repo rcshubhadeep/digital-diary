@@ -28,9 +28,11 @@
 
 </div>
 <script type="text/javascript">
-	var url_to_get = "/search";
 	$(document).ready(function(){
 		$("#search_button").click(function(){
+			//Notice the use of $SCRIPT_ROOT variable here before the URL
+			//getJSON is a jQuery shortcut for its  $ajax. It gives few out of the 
+			// box advantages over the plain and simple $ajax
 			$.getJSON($SCRIPT_ROOT + '/search', {
         		username: $("#search").val()
       			}, function(data) {
@@ -53,7 +55,6 @@
         				html = html + "<p>" + data[row]['entry'] + "</p>";
         				html = html + '<a class="btn btn-primary" href="/view/' + data[row]['_id']['$oid'] + '">';
         				html = html + 'Read More <span class="glyphicon glyphicon-chevron-right"></span></a>';
-        				console.log(html);
         				$(".col-lg-8").html(html);
         			}
       		});
