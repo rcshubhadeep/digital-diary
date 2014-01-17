@@ -127,7 +127,7 @@ def post_name():
 
 @app.route("/search")
 def search_json():
-    '''This is a JSON route. This kin of routes are normally called from a Ajax call.
+    '''This is a JSON route. This kind of routes are normally called from a Ajax call.
     Instead of returning a template it returns a json string to the calling client
     (here our browser.). Notice the return statement carefully.
     Also notice the comment above it'''
