@@ -26,7 +26,7 @@ No new module/directory/package is introduced here
 Explaining app.py file:
 ----------------------
 If we look into the file we will see that a new route has been introduced. This is called /search.
-So, we will hit the route from our front end javascript as hpp://localhost:5000/search . We supply the corresponding
+So, we will hit the route from our front end javascript as http://localhost:5000/search . We supply the corresponding
 method with the user name on which we want to search and it calls the search_by_username function from the db package
 which gives us a mongoDB cursor as the result and we iterate over that to make a list of documents and finally we use 
 json.dumps method to transfer this structure into a valid json string and send it back as response. 
@@ -39,6 +39,6 @@ The main mechanism is to call the search route with the user name in each click 
  
 Conclusion:
 ----------
-When you are done looking into the code files and editing them and can run the app (python app.py) you should visit [http://localhost:5000] (http://localhost:5000) and put in your name in the text box at the top and hit “Go!”. 
-In the add entry page you will see that we have a checkbox bellow the entry text area and now when you submit the entry check that. After you are done you will be redirected to the index page and you will not see any chaanges there.
-Now, enter a different name in the top left text box at index page and hit Go!. Add an entry and comeback you are only seeing your own entery now all the others are vanished!! Privacy secured.
+When you are done looking into the code files and editing them and can run the app (python app.py) you should visit [http://localhost:5000] (http://localhost:5000)
+you will see a search box beside the home and add entry link. Try putting a user name there which does exist in the records and see the result.
+Also try with a username that does not exist. 
