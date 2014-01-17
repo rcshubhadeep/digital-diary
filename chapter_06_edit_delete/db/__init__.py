@@ -69,6 +69,8 @@ def delete_entry(entry_id):
 
 def edit_entry(entry_id, body):
     try:
+        ## As we are using multi=False, we have to use the MongoDB $set operator
+        ## to Update the collection.
         collection.update({"_id": ObjectId(entry_id)},
                           {"$set": {"entry": body}},  multi=False)
         return True
