@@ -1,0 +1,65 @@
+<!-- This is extending the base. and this line will be the first line if the HTML -->
+{% extends "base.html" %}
+{% block title %} - Home{% endblock %}
+{% block content %}
+<!-- Did you notice how we are using a block "title" here to change 
+	the page title based on the page we are loading? -->
+	<form class="form-horizontal" id="registerHere" method='post' action="{{ url_for('post_name') }}">
+	<label>Enter your name</label>
+    <input name="person_name" id="person_name"/>
+    <button type='submit' class="btn btn-default">Go!</button>
+    </form>
+<div class="col-lg-8">		          
+          <!-- diary entry -->
+          {% for entry in entries %}
+          	<h1><a href="/view/{{ entry['_id'] }}">{{ entry['title'] }}</a></h1>
+          	<p class="lead">by {{ entry['user'] }}</p>
+          	<hr>
+          	<p><span class="glyphicon glyphicon-time"></span> Posted on {{ entry['date'] }}</p>
+          	<hr>
+          	<p>{{ entry['entry'] }}</p>
+          	<a class="btn btn-primary" href="/view/{{ entry['_id'] }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>          	
+          {% endfor %}
+          <!-- pager. Will come later. Just the structure here -->
+          <!-- <ul class="pager">
+            <li class="previous"><a href="#">&larr; Older</a></li>
+            <li class="next"><a href="#">Newer &rarr;</a></li>
+          </ul> -->
+
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#search_button").click(function(){
+			//Notice the use of $SCRIPT_ROOT variable here before the URL
+			//getJSON is a jQuery shortcut for its  $ajax. It gives few out of the 
+			// box advantages over the plain and simple $ajax
+			$.getJSON($SCRIPT_ROOT + '/search', {
+        		username: $("#search").val()
+      			}, function(data) {
+      				html = '';
+      				/**
+      				 * We are looping over the whole Data here and creating the new table
+      				 * structure and then replacing the old one with this new one. 
+      				 * We will in future implement the same feature with Angular JS.
+      				 * That will make us understand that what are the differences between Angular and jQuery
+      				 */
+        			for (row in data){
+        				html = html+ '<h1><a href="/view/'+data[row]['_id']['$oid']+'">'+data[row]['title']+'</a></h1>';
+        				html = html + '<p class="lead">by '+data[row]['user']+"</p><hr>";
+        				html = html + '<p><span class="glyphicon glyphicon-time"></span>Posted on ';
+        				dt = new Date(data[row]['date']['$date'] * 1000);
+        				dt_str = dt.toString();
+        				res = dt_str.split(" ");
+        				final_date_str = res.slice(0,3).join(" ");
+        				html = html + final_date_str + "</p><hr>";
+        				html = html + "<p>" + data[row]['entry'] + "</p>";
+        				html = html + '<a class="btn btn-primary" href="/view/' + data[row]['_id']['$oid'] + '">';
+        				html = html + 'Read More <span class="glyphicon glyphicon-chevron-right"></span></a>';
+        				$(".col-lg-8").html(html);
+        			}
+      		});
+      		return false;
+    	});
+	});
+</script>
+{% endblock %}

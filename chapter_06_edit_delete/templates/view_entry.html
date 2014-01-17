@@ -1,0 +1,82 @@
+<!-- This is extending the base. and this line will be the first line if the HTML -->
+{% extends "base.html" %}
+{% block title %} - View{% endblock %}
+{% block content %}
+<!-- Did you notice how we are using a block "title" here to change 
+	the page title based on the page we are loading? -->
+<div class="col-lg-8">
+	<!-- It is actually same as index template. Just the content is for
+		one entry only -->
+	<!-- diary entry -->
+		<!-- Bootstrap alert -->
+			<div>
+    		<div id="msgbox" class="alert alert-success fade in">
+      			<a href="#" data-dismiss="alert" class="close">×</a>
+      			<p></p>
+    		</div>
+		  </div> 
+		<!-- Ends -->
+          <h1><p>{{ entry['title'] }}</p></h1>
+          <p class="lead">by {{ entry['user'] }}</p>
+          <hr>
+          <p><span class="glyphicon glyphicon-time"></span> Posted on {{ entry['date'] }}</p>
+          <hr>
+          <p contenteditable="true" id="entry_text">{{ entry['entry'] }}</p>
+          <hr>
+          <button id = "savebtn" class="btn btn-primary" type="button">Save</button>
+          <button id = "delbtn" class="btn btn-primary" type="button">Delete</button>
+          
+     <script>
+     	var a = "{{ entry['_id'] }}";
+     	$(document).ready(function(){
+     		$("#msgbox").hide();
+     		$("#savebtn").data('idx', a);
+     		$("#delbtn").data('idx', a);
+     		$("#savebtn").click(function(){
+     			var myData = $('#savebtn').data('idx');
+     			dataToBeSent = {id: myData, 
+     							text: $("#entry_text").text()};
+     			/*
+     			 * NOTE--- We are using $.post method here instead of our old and familiar 
+     			 * $.getJSON becasue we want to make http POST the data to the server.
+     			 */
+				$.ajax({
+						type:"post",
+						contentType: "application/json; charset=utf-8",
+						url: $SCRIPT_ROOT + '/edit',
+						data:JSON.stringify(dataToBeSent),
+						success:function(data){
+							if (data['result'] == 'success'){
+								$("#msgbox").find("p").text("Success");
+								$("#msgbox").show();
+							}else{
+								$("#msgbox").find("p").text("Error");
+								$("#msgbox").show();
+							}
+						},
+						dataType: "json"
+					});    			
+     		});
+     		$("#delbtn").click(function(){
+     			var myData = $('#delbtn').data('idx');
+     			$.getJSON($SCRIPT_ROOT + '/delete/'+myData,
+     					{},
+     					function(data){
+     						if (data['result'] == 'success'){
+								$("#msgbox").find("p").text("Success");
+								$("#msgbox").show();
+								/**
+								 * This is not a good thing. Can we redirect user
+								 * to the index page after 5 minutes?
+								 */
+							}else{
+								$("#msgbox").find("p").text("Success");
+								$("#msgbox").show();
+							}
+     					}
+     			);
+     		});
+     	});
+     </script>         	
+</div>
+{% endblock %}
