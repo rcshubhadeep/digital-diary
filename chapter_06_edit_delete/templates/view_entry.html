@@ -37,7 +37,7 @@
      			dataToBeSent = {id: myData, 
      							text: $("#entry_text").text()};
      			/*
-     			 * NOTE--- We are using $.post method here instead of our old and familiar 
+     			 * NOTE--- We are using $.ajax method here with type="post" instead of our old and familiar 
      			 * $.getJSON becasue we want to make http POST the data to the server.
      			 */
 				$.ajax({
